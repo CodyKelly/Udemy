@@ -2,14 +2,11 @@ import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 import Users from './Users';
 
-export default function Search({
-  searchUsers,
-  clearUsers,
-  showClear,
-  createAlert,
-}) {
+const Search = ({ searchUsers, clearUsers, showClear, createAlert }) => {
   const [text, setText] = useState('');
+
   const handleChange = (e) => setText(e.target.value);
+
   const handleSubmit = (e) => {
     e.preventDefault();
     if (text === '') {
@@ -19,6 +16,7 @@ export default function Search({
       setText('');
     }
   };
+
   return (
     <div>
       <form className="form" onSubmit={handleSubmit}>
@@ -42,9 +40,11 @@ export default function Search({
       )}
     </div>
   );
-}
+};
 
 Search.propTypes = {
   searchUsers: PropTypes.func.isRequired,
   createAlert: PropTypes.func.isRequired,
 };
+
+export default Search;
