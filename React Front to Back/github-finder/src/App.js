@@ -1,11 +1,11 @@
 import { Navbar } from './components/layout/Navbar';
-import React, { Fragment } from 'react';
+import React from 'react';
 import './App.css';
-import Users from './components/users/Users';
-import Search from './components/users/Search';
 import Alert from './components/layout/Alert';
 import About from './components/pages/About';
 import User from './components/users/User';
+import Home from './components/pages/Home';
+import NotFound from './components/pages/NotFound';
 import GithubState from './context/github/GithubState';
 import AlertState from './context/alert/AlertState';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
@@ -20,17 +20,10 @@ function App() {
             <div className="container">
               <Alert />
               <Routes>
-                <Route
-                  path="/"
-                  element={
-                    <Fragment>
-                      <Search />
-                      <Users />
-                    </Fragment>
-                  }
-                />
-                <Route path="/about" element={<About />}></Route>
+                <Route path="/" element={<Home />} />
+                <Route path="/about" element={<About />} />
                 <Route path="/user/:login" element={<User />} />
+                <Route path="*" element={<NotFound />} />
               </Routes>
             </div>
           </div>
