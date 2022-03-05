@@ -29,6 +29,7 @@ export default (state, action) => {
       return {
         ...state,
         repos: action.payload,
+        loading: false,
       };
     case GET_USER:
       return {

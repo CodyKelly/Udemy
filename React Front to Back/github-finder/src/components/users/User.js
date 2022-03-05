@@ -6,7 +6,7 @@ import GithubContext from '../../context/github/githubContext';
 
 const User = () => {
   const githubContext = useContext(GithubContext);
-  const { getUser, loading, user, getUserRepos } = githubContext;
+  const { getUser, loading, user, getUserRepos, repos } = githubContext;
   const params = useParams();
   useEffect(() => {
     getUser(params.login);
@@ -30,6 +30,7 @@ const User = () => {
   } = user;
 
   if (loading) return <Spinner />;
+  console.log(repos);
 
   return (
     <Fragment>
@@ -97,7 +98,7 @@ const User = () => {
         <div className="badge badge-light">Public Repos: {public_repos}</div>
         <div className="badge badge-dark">Public Gists: {public_gists}</div>
       </div>
-      <Repos />
+      <Repos repos={repos} />
     </Fragment>
   );
 };
